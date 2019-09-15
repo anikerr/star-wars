@@ -13,7 +13,6 @@ export default class App extends React.Component {
       isLoading: false,
       error: null,
     };
-    this.getFilms.bind(this);
   }
 
   async componentDidMount() {
@@ -49,21 +48,20 @@ export default class App extends React.Component {
     }
   }
 
-  getFilms(filmArr) {
-    this.setState({ isLoading: true });
-    try {
-      const films = filmArr.forEach(async url => {
-        const result = await axios.get(url);
-        console.log(result.data);
-        return result.data;
-      });
-      console.log(films);
+  async getData(item) {
+    const result = await axios.get(item);
+    return result.data;
+  }
 
+  async getFilms(filmArr) {
+    try {
+      const films = await Promise.all(filmArr.map(url => this.getData(url)));
       this.setState({
         films,
         isLoading: false,
         error: null,
       });
+      console.log(films);
     } catch (error) {
       this.setState({
         films: null,

@@ -7,8 +7,8 @@ const SingleCharacter = props => {
       {props.films && (
         <ul>
           {props.films.map(film => (
-            <li key={film.date}>
-              {film.title}, {film.date}
+            <li key={film.created}>
+              {film.title}, {film.created}
             </li>
           ))}
         </ul>
