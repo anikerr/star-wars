@@ -1,5 +1,5 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
 import SingleCharacter from './singleCharacter';
 
 export default class CharacterList extends React.Component {
@@ -19,55 +19,58 @@ export default class CharacterList extends React.Component {
       const result = await axios.get('./characters.json');
       this.setState({
         characters: result.data.characters,
-        isLoading: false
+        isLoading: false,
       });
-      console.log(this.state)
+      console.log(this.state);
     } catch (error) {
       this.setState({
         error,
-        isLoading: false
+        isLoading: false,
       });
     }
   }
 
   async getCharacter(event, url) {
-    this.setState({isLoading: true})
+    event.preventDefault();
+    this.setState({ isLoading: true });
     try {
       const result = await axios.get(url);
       this.setState({
         selectedChar: result.data,
         error: null,
-        isLoading: false
+        isLoading: false,
       });
     } catch (error) {
       this.setState({
         error,
         selectedChar: null,
-        isLoading: false
+        isLoading: false,
       });
-      console.log(this.state)
+      console.log(this.state);
     }
   }
 
-  render () {
-
+  render() {
     return (
       <div>
-          {this.state.selectedChar &&
-            <SingleCharacter {...this.state} />
-          }
-          {this.state.error &&
-            <h1>Error - please select another character</h1>
-          }
-      <h1>Characters</h1>
-      {!this.state.isLoading &&
+        {this.state.selectedChar && <SingleCharacter {...this.state} />}
+        {this.state.error && <h1>Error - please select another character</h1>}
+        <h1>Choose a Character</h1>
+        {!this.state.isLoading && (
           <ul>
-            {this.state.characters.map(character =>
-            <li key={character.name}><button type="button" onClick={event => this.getCharacter(event, character.url)}>{character.name}</button></li>
-            )}
+            {this.state.characters.map(character => (
+              <li key={character.name}>
+                <button
+                  type="button"
+                  onClick={event => this.getCharacter(event, character.url)}
+                >
+                  {character.name}
+                </button>
+              </li>
+            ))}
           </ul>
-      }
-    </div>
-    )
+        )}
+      </div>
+    );
   }
 }
