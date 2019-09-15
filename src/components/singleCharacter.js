@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatDate } from '../helpers';
 
 const SingleCharacter = props => {
   return (
@@ -8,7 +9,7 @@ const SingleCharacter = props => {
         <ul>
           {props.films.map(film => (
             <li key={film.created}>
-              {film.title}, {film.created}
+              <em>{film.title}</em>, {formatDate(film.release_date)}
             </li>
           ))}
         </ul>

@@ -3,7 +3,7 @@ import React from 'react';
 const AllCharacters = props => {
   return (
     <div>
-      <h1>Characters</h1>
+      <h1>Choose a Character</h1>
       {!props.isLoading && (
         <ul>
           {props.characters.map(character => (
