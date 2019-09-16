@@ -7,3 +7,12 @@ export const formatDate = date => {
     day: 'numeric',
   });
 };
+
+export const randomMessage = () => {
+  const errorMessages = [
+    'In a dark place we find ourselves, and a little more knowledge lights our way.',
+    'Patience you must have, my young padawan.',
+    'When you look at the dark side, careful you must be. For the dark side looks back.',
+  ];
+  return errorMessages[Math.floor(Math.random() * errorMessages.length)];
+};

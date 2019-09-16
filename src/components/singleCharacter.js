@@ -1,9 +1,12 @@
 import React from 'react';
+
+import ErrorMessage from './ErrorMessage.js';
 import { formatDate } from '../helpers';
+import './SingleCharacter.css';
 
 const SingleCharacter = props => {
   if (props.error) {
-    return <h1>Error - please select another character</h1>;
+    return <ErrorMessage />;
   } else {
     return (
       <div className="character">
@@ -11,7 +14,7 @@ const SingleCharacter = props => {
           <div>
             <h1>{props.selectedChar.name}</h1>
             <img
-              src={require(`../assets/${props.selectedChar.height}.jpg`)}
+              src={require(`../assets/img/${props.selectedChar.height}.jpg`)}
               alt="character"
             />
           </div>

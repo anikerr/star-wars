@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-// import Fade from 'react-reveal/Fade';
 import { CSSTransition } from 'react-transition-group';
-import './fade.css';
 
-import AllCharacters from './allCharacters';
-import SingleCharacter from './singleCharacter';
+import AllCharacters from './AllCharacters';
+import SingleCharacter from './SingleCharacter';
+import Header from './Header';
+import '../assets/fade.css';
+import './App.css';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,13 +16,14 @@ export default class App extends React.Component {
       selectedChar: null,
       films: [],
       show: false,
+      fadeIn: false,
       isLoading: false,
       error: false,
     };
   }
 
   async componentDidMount() {
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, fadeIn: true });
     try {
       const result = await axios.get('./characters.json');
       this.setState({
@@ -83,20 +85,21 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="container">
+        <CSSTransition in={this.state.fadeIn} timeout={600} classNames="fade">
+          <Header />
+        </CSSTransition>
         <AllCharacters
           characters={this.state.characters}
           getCharacter={this.getCharacter.bind(this)}
           isLoading={this.state.isLoading}
         />
-        {/* <Fade bottom when={this.state.show}> */}
         <CSSTransition in={this.state.show} timeout={600} classNames="fade">
           <SingleCharacter
             selectedChar={this.state.selectedChar}
             films={this.state.films}
             error={this.state.error}
           />
-          {/* </Fade> */}
         </CSSTransition>
       </div>
     );

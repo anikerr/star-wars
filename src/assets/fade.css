@@ -1,10 +1,10 @@
 .fade-enter {
-  opacity: 0.01;
+  opacity: 0;
 }
 
 .fade-enter.fade-enter-active {
   opacity: 1;
-  transition: opacity 600ms ease-in;
+  transition: opacity 1000ms ease-in;
 }
 
 .fade-leave {
@@ -12,6 +12,6 @@
 }
 
 .fade-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 600ms ease-in;
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
 }

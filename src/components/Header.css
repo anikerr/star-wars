@@ -1,0 +1,7 @@
+.header {
+  display: flex;
+}
+
+.header img {
+  margin: 0 auto;
+}
