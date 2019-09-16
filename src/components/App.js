@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import Fade from 'react-reveal/Fade';
+// import Fade from 'react-reveal/Fade';
+import { CSSTransition } from 'react-transition-group';
+import './fade.css';
 
 import AllCharacters from './allCharacters';
 import SingleCharacter from './singleCharacter';
@@ -53,7 +55,6 @@ export default class App extends React.Component {
         error: true,
         selectedChar: null,
       });
-      console.log(this.state.error);
     }
   }
 
@@ -63,14 +64,10 @@ export default class App extends React.Component {
   }
 
   async getFilms(filmArr) {
-    // this.setState({
-    //   show: false,
-    // });
     try {
       const films = await Promise.all(filmArr.map(url => this.getData(url)));
       this.setState({
         films,
-        // show: true,
         isLoading: false,
         error: false,
       });
@@ -92,13 +89,15 @@ export default class App extends React.Component {
           getCharacter={this.getCharacter.bind(this)}
           isLoading={this.state.isLoading}
         />
-        <Fade bottom when={this.state.show}>
+        {/* <Fade bottom when={this.state.show}> */}
+        <CSSTransition in={this.state.show} timeout={600} classNames="fade">
           <SingleCharacter
             selectedChar={this.state.selectedChar}
             films={this.state.films}
             error={this.state.error}
           />
-        </Fade>
+          {/* </Fade> */}
+        </CSSTransition>
       </div>
     );
   }
