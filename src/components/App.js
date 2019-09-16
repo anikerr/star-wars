@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Fade from 'react-reveal/Fade';
+
 import AllCharacters from './allCharacters';
 import SingleCharacter from './singleCharacter';
 
@@ -10,8 +12,9 @@ export default class App extends React.Component {
       characters: [],
       selectedChar: null,
       films: [],
+      show: false,
       isLoading: false,
-      error: null,
+      error: false,
     };
   }
 
@@ -25,7 +28,7 @@ export default class App extends React.Component {
       });
     } catch (error) {
       this.setState({
-        error,
+        error: true,
         isLoading: false,
       });
     }
@@ -33,18 +36,24 @@ export default class App extends React.Component {
 
   async getCharacter(event, url) {
     event.preventDefault();
+    this.setState({
+      show: false,
+    });
     try {
       const result = await axios.get(url);
       this.setState({
+        show: true,
         selectedChar: result.data,
         error: null,
       });
       this.getFilms(this.state.selectedChar.films);
     } catch (error) {
       this.setState({
-        error,
+        show: true,
+        error: true,
         selectedChar: null,
       });
+      console.log(this.state.error);
     }
   }
 
@@ -54,19 +63,23 @@ export default class App extends React.Component {
   }
 
   async getFilms(filmArr) {
+    // this.setState({
+    //   show: false,
+    // });
     try {
       const films = await Promise.all(filmArr.map(url => this.getData(url)));
       this.setState({
         films,
+        // show: true,
         isLoading: false,
-        error: null,
+        error: false,
       });
       console.log(films);
     } catch (error) {
       this.setState({
         films: null,
         isLoading: false,
-        error,
+        error: true,
       });
     }
   }
@@ -74,20 +87,18 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.state.selectedChar && (
-          <SingleCharacter
-            selectedChar={this.state.selectedChar}
-            films={this.state.films}
-            isLoading={this.state.isLoading}
-          />
-        )}
-        {this.state.error && <h1>Error - please select another character</h1>}
-
         <AllCharacters
           characters={this.state.characters}
           getCharacter={this.getCharacter.bind(this)}
           isLoading={this.state.isLoading}
         />
+        <Fade bottom when={this.state.show}>
+          <SingleCharacter
+            selectedChar={this.state.selectedChar}
+            films={this.state.films}
+            error={this.state.error}
+          />
+        </Fade>
       </div>
     );
   }
