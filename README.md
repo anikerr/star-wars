@@ -1,5 +1,7 @@
 ## Star Wars
 
+Fetches data based on character from the star wars API.
+
 ## Start
 
 `npm install`
