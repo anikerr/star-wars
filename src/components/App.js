@@ -61,8 +61,16 @@ export default class App extends React.Component {
   }
 
   async getData(item) {
-    const result = await axios.get(item);
-    return result.data;
+    try {
+      const result = await axios.get(item);
+      return result.data;
+    } catch (error) {
+      this.setState({
+        films: null,
+        isLoading: false,
+        error: true,
+      });
+    }
   }
 
   async getFilms(filmArr) {
