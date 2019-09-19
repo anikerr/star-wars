@@ -1,6 +1,6 @@
 ## Star Wars
 
-Fetches data based on character from the star wars API.
+Fetches data based on character from the Star Wars API.
 
 ## Start
 
