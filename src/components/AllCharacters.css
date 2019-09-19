@@ -1,5 +1,5 @@
 .characters {
-  padding: 4em 0 4em;
+  padding: 3em 0 3em;
 }
 
 .characters ul {
@@ -8,4 +8,16 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+@media all and (max-width: 1024px) {
+  .characters ul {
+    width: 100%;
+  }
+  .characters li {
+    width: 100%;
+  }
+  .button {
+    width: 600px;
+  }
 }

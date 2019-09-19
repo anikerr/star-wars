@@ -1,6 +1,4 @@
-## Star Wars Characters
-
-Code test for ATTCK
+## Star Wars
 
 ## Start
 

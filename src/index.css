@@ -84,7 +84,7 @@ input[type='button']:focus {
   input[type='submit'],
   input[type='reset'],
   input[type='button'] {
-    width: 260px;
-    margin: 10px;
+    width: 100%;
+    margin-bottom: 2em;
   }
 }
