@@ -1,7 +1,17 @@
 @font-face {
   font-family: 'Univers Condensed';
-  src: local('Univers Condensed'),
-    url(./assets/fonts/UniversBoldCondensed.ttf) format('ttf');
+  font-style: normal;
+  font-weight: 700;
+  src: local('Univers Condensed Bold'), local('Univers-Condensed-Bold'),
+    url(./assets/fonts/UniversBoldCondensed.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Univers Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Univers Condensed Medium'), local('Univers-Condensed-Medium'),
+    url(./assets/fonts/UniversMediumCondensed.ttf) format('truetype');
 }
 
 body {
@@ -9,13 +19,24 @@ body {
   background-color: #000000;
   color: #ffffff;
   font-family: 'Univers Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+p {
+  font-size: 1.25em;
+}
+
 h1 {
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+img {
+  max-width: 100%;
 }
 
 .button,
@@ -26,12 +47,13 @@ input[type='button'] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  color: #bbb;
   text-align: center;
-  font-size: 11px;
-  font-weight: 600;
+  font-family: 'Univers Condensed', sans-serif;
+  font-size: 1em;
+  font-weight: 400;
   line-height: 38px;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.2rem;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
@@ -54,4 +76,15 @@ input[type='button']:focus {
   color: #fccd06;
   border-color: #fccd06;
   outline: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .button,
+  button,
+  input[type='submit'],
+  input[type='reset'],
+  input[type='button'] {
+    width: 260px;
+    margin: 10px;
+  }
 }

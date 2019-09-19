@@ -1,6 +1,5 @@
 .characters {
-  padding: 2em;
-  border-bottom: 1px solid;
+  padding: 4em 0 4em;
 }
 
 .characters ul {
@@ -9,8 +8,4 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.characters button {
-  width: 100%;
 }

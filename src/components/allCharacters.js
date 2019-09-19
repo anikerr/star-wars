@@ -4,9 +4,9 @@ import './AllCharacters.css';
 const AllCharacters = props => {
   return (
     <div>
-      <h1>Choose a Character</h1>
       {!props.isLoading && (
         <div className="characters">
+          <h1>Choose a Character</h1>
           <ul>
             {props.characters.map(character => (
               <li key={character.name}>

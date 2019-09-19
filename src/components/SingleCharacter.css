@@ -1,3 +1,9 @@
-img {
-  max-width: 100%;
+.character ul {
+  line-height: 2em;
+  font-family: 'Univers Condensed', sans-serif;
+  font-size: 1.25em;
+  font-weight: 400;
+  padding: 2em;
+  list-style: none;
+  background-color: #ffffff14;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ErrorMessage from './ErrorMessage.js';
 import { formatDate } from '../helpers';
 import './SingleCharacter.css';
@@ -19,14 +18,17 @@ const SingleCharacter = props => {
             />
           </div>
         )}
-        {props.films && (
-          <ul>
-            {props.films.map(film => (
-              <li key={film.created}>
-                <em>{film.title}</em>, {formatDate(film.release_date)}
-              </li>
-            ))}
-          </ul>
+        {props.films.length > 0 && (
+          <div>
+            <h1>Films</h1>
+            <ul>
+              {props.films.map(film => (
+                <li key={film.created}>
+                  <em>{film.title}</em>, {formatDate(film.release_date)}
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     );

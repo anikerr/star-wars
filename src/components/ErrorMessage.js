@@ -1,5 +1,6 @@
 import React from 'react';
 import { randomMessage } from '../helpers';
+import icon from '../assets/img/yoda.png';
 
 class ErrorMessage extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class ErrorMessage extends React.Component {
         <h1>Error</h1>
         <p>
           <em>{this.state.message}</em>
+          <img src={icon} alt="yoda" width="28" />
         </p>
       </div>
     );

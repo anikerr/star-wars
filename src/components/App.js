@@ -73,7 +73,11 @@ export default class App extends React.Component {
         isLoading: false,
         error: false,
       });
-      console.log(films);
+      this.refs.characterView.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
     } catch (error) {
       this.setState({
         films: null,
@@ -85,22 +89,30 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <CSSTransition in={this.state.fadeIn} timeout={600} classNames="fade">
-          <Header />
-        </CSSTransition>
-        <AllCharacters
-          characters={this.state.characters}
-          getCharacter={this.getCharacter.bind(this)}
-          isLoading={this.state.isLoading}
-        />
-        <CSSTransition in={this.state.show} timeout={600} classNames="fade">
-          <SingleCharacter
-            selectedChar={this.state.selectedChar}
-            films={this.state.films}
-            error={this.state.error}
-          />
-        </CSSTransition>
+      <div>
+        <div className="container-fluid">
+          <CSSTransition in={this.state.fadeIn} timeout={600} classNames="fade">
+            <Header />
+          </CSSTransition>
+          <div className="container">
+            <AllCharacters
+              characters={this.state.characters}
+              getCharacter={this.getCharacter.bind(this)}
+              isLoading={this.state.isLoading}
+            />
+          </div>
+        </div>
+        <div className="container">
+          <CSSTransition in={this.state.show} timeout={600} classNames="fade">
+            <div ref="characterView">
+              <SingleCharacter
+                selectedChar={this.state.selectedChar}
+                films={this.state.films}
+                error={this.state.error}
+              />
+            </div>
+          </CSSTransition>
+        </div>
       </div>
     );
   }
