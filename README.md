@@ -4,7 +4,7 @@ Fetches data based on character from the Star Wars API. Displays an error messag
 
 ## Demo
 
-[https://mysterious-beach-91010.herokuapp.com/]
+https://mysterious-beach-91010.herokuapp.com/
 
 ## Start
 
