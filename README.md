@@ -1,6 +1,10 @@
 ## Star Wars
 
-Fetches data based on character from the Star Wars API.
+Fetches data based on character from the Star Wars API. Displays an error message for Obi-Wan. 
+
+## Demo
+
+[https://mysterious-beach-91010.herokuapp.com/]
 
 ## Start
 
